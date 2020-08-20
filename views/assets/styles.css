@@ -1,0 +1,23 @@
+body {
+    background-image: url('../storage/background.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover ;
+}
+
+#title {
+    opacity:1.0;
+    transform: scale(1);
+}
+  
+  .album img:hover {
+    opacity: 0.5;
+    transform: scale(1.03);
+  }
+
+  #add {
+    border-radius: 50%;
+    
+  }
+

@@ -1,0 +1,30 @@
+#header {
+  color:#ffb647;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 100px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 1px;
+}
+
+body {
+  background-image: url('../storage/background.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#title {
+  opacity:1.0;
+  transform: scale(1);
+}
+
+.album img:hover {
+  opacity: 0.5;
+  transform: scale(1.03);
+}
+
+
+
+

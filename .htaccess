@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /Gallery/
+    RewriteRule ^.*$ index.php [END]
+
+</IfModule>
+
