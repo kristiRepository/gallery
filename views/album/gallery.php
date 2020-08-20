@@ -11,7 +11,7 @@
             <div>
                 <img class="rounded mx-auto d-block" id="title" style="padding-top:30px; padding-bottom:30px;" src="/views/storage/banner.png">
             </div>
-            <?php 
+            <?php
             if (isset($_SESSION['success'])) {
             ?><div class="alert alert-success"><?php echo $_SESSION['success']; ?></div>
             <?php }
@@ -24,7 +24,7 @@
                 } ?>
                 <div class="col-lg-4" style="padding-bottom:20px;">
                     <div class="card border-primary transform-on-hover">
-                        <a  href=<?php echo "/Gallery/album/?id=" . $album['id']; ?>> <img src=<?php echo "/views/storage/albums/" . $album['thumbnail']; ?> class="card-img-top img-thumbnail border" style="height:250px;"></a>
+                        <a href=<?php echo "/Gallery/album/?id=" . $album['id']; ?>> <img src=<?php echo "/views/storage/albums/" . $album['thumbnail']; ?> class="card-img-top img-thumbnail border" style="height:250px;"></a>
                         <div class="card-body">
                             <h6><?php echo $album['name']; ?></h6>
                             <p class="text-muted card-text"><?php
@@ -80,11 +80,11 @@
         </div>
     </form>
 
-    
 
 
 
-    <script src="/views/assets/js/scripts.js">  </script>
+
+    <script src="/views/assets/js/scripts.js"> </script>
 
 
 

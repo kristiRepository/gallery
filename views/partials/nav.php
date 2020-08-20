@@ -1,18 +1,17 @@
-
 <div class="topnav top">
     <a href="/"> <img class="rounded mx-auto d-block" id="title" src="/views/storage/banner.png" width="170px"></a>
     <button class="button" onclick="display()" style="vertical-align:middle"><span>All albums </span></button>
 </div>
 
 
-<div class="topnav" id="dropdown" style="display:none;" >
+<div class="topnav" id="dropdown" style="display:none;">
     <hr>
     <?php foreach ($albums as $album) { ?>
 
-        <a href=<?php echo "/Gallery/album/?id=" . $album['id']; ?>><?php echo $album['name'] ?></a> 
-       
-        <?php } ?>
-        <a style="background-color: #f4511e; color:white;" href="/Gallery/create/">Add new album</a>
+        <a href=<?php echo "/Gallery/album/?id=" . $album['id']; ?>><?php echo $album['name'] ?></a>
+
+    <?php } ?>
+    <a style="background-color: #f4511e; color:white;" href="/Gallery/create/">Add new album</a>
 </div>
 
 
@@ -95,12 +94,12 @@
 </style>
 
 <script>
-function display() {
-var x=document.getElementById("dropdown");
-if(x.style.display=="none"){
-    x.style.display="block";
-}else{
-    x.style.display = "none";
-}
+    function display() {
+        var x = document.getElementById("dropdown");
+        if (x.style.display == "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
     }
 </script>

@@ -7,10 +7,7 @@ $('.ima').on("click",function(){
                    success:function(data){
                      $('#carouselExampleControls').html($(data).find('#carouselExampleControls'));
       }});
- 
-      });
-
-
+   });
 
       function d(photo,album) {
 
@@ -26,21 +23,15 @@ $('.ima').on("click",function(){
             success:function(data){
              $('#container').html($(data).find('#container'));
             }
-
         })
-         
-
      }
-
-
 
      function handleDelete(id) {
 
         var form = document.getElementById('id');
         form.value = id;
         $('#deleteModal').modal('show')
-
-    }
+ }
 
 
 

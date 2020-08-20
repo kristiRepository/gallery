@@ -11,7 +11,7 @@ class PhotoController
 
     public function __construct()
     {
-       
+
         $config = require('config.php');
         $this->conn = Connection::create($config);
         $this->queryAlbum = new Album($this->conn);
@@ -70,27 +70,23 @@ class PhotoController
         $this->queryPhoto->deleteP($photo);
         $_SESSION['success'] = 'Photo Deleted';
         $id = intval($_POST['albumId']);
-      
-        
+
+
         $photos = $this->queryPhoto->fetchPhotos($id);
         $main = $this->queryAlbum->findAlbum($id);
         $albums = $this->queryAlbum->fetchAlbums($id);
 
         require('views/photo/index.php');
-       
     }
 
-    public function slider(){
-        
+    public function slider()
+    {
+
         $id = intVal($_GET['album']);
-        $photoId=intVal($_GET['photo']);
+        $photoId = intVal($_GET['photo']);
         $photos = $this->queryPhoto->fetchPhotos($id);
-        $photoPath=$this->queryPhoto->findPhoto($photoId);
-        $photoNumber=$this->queryPhoto->counted($id);
+        $photoPath = $this->queryPhoto->findPhoto($photoId);
+        $photoNumber = $this->queryPhoto->counted($id);
         require('views/photo/slider.php');
-
-
     }
-
-    
 }

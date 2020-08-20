@@ -1,5 +1,5 @@
 #header {
-  color:#ffb647;
+  color: #ffb647;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 100px;
   font-weight: bold;
@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url('../storage/background.png');
+  background-image: url("../storage/background.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -16,7 +16,7 @@ body {
 }
 
 #title {
-  opacity:1.0;
+  opacity: 1;
   transform: scale(1);
 }
 
@@ -24,7 +24,3 @@ body {
   opacity: 0.5;
   transform: scale(1.03);
 }
-
-
-
-
