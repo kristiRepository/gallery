@@ -93,13 +93,4 @@
     }
 </style>
 
-<script>
-    function display() {
-        var x = document.getElementById("dropdown");
-        if (x.style.display == "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
+<script src="/views/assets/js/scripts.js"> </script>

@@ -51,6 +51,4 @@ class Photo
         return $statment->fetchAll();
     }
 
-
-  
 }
