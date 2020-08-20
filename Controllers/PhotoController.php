@@ -86,7 +86,6 @@ class PhotoController
         $photoId = intVal($_GET['photo']);
         $photos = $this->queryPhoto->fetchPhotos($id);
         $photoPath = $this->queryPhoto->findPhoto($photoId);
-        $photoNumber = $this->queryPhoto->counted($id);
         require('views/photo/slider.php');
     }
 }

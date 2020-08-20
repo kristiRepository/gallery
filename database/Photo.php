@@ -52,13 +52,5 @@ class Photo
     }
 
 
-    public function counted($id)
-    {
-        $query = "SELECT COUNT(caption) FROM photo WHERE album_id=:id";
-        $statment = $this->pdo->prepare($query);
-        $statment->bindParam(":id", $id, PDO::PARAM_STR);
-        $statment->execute();
-        $res = $statment->fetchAll();
-        return $res[0];
-    }
+  
 }
