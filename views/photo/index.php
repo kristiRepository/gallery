@@ -8,12 +8,12 @@
 
 
     <section class="album gallery-block cards-gallery">
-        <span><a href=<?php echo "/photo/create/?album=" . $main[0]['id']; ?> class="btn btn-primary mt-2 mr-2" style="float:right; width:195px; ">Add Photo</a></span>
+        <span><a href=<?php echo "/photo/create/?album=" . $id;; ?> class="btn btn-primary mt-2 mr-2" style="float:right; width:195px; ">Add Photo</a></span>
         <div class="container" id="container">
 
             <div style="text-align: center; padding-bottom:20px;">
-
-                <h1 id="header"><?php echo $main[0]['name']; ?></h1>
+                <h1 id="header"><?php
+                                echo $main[$id]; ?></h1>
 
             </div>
             <div>
@@ -26,14 +26,15 @@
                 <?php if (!empty($photos)) {
                     $i = 0;
                     foreach ($photos as $photo) {
+
                         if ($i % 3 == 0) {
                             echo '<div class="row">';
                         } ?>
                         <div class="col-lg-4" style="padding-bottom:20px;">
                             <div class="card border-primary transform-on-hover">
-                                <a target="_blank" href=<?php echo "/slider/?photo=" . $photo['id'] . "&album=" . $main[0]['id']; ?>> <img src=<?php echo "/views/storage/photos/" . $photo['path']; ?> class="card-img-top img-thumbnail border" style="height:250px;"></a>
+                                <a target="_blank" href=<?php echo "/slider/?photo=" . $photo['photoId'] . "&album=" . $photo['album_id'];; ?>> <img src=<?php echo "/views/storage/photos/" . $photo['path']; ?> class="card-img-top img-thumbnail border" style="height:250px;"></a>
                                 <div class="card-body">
-                                    <h6><?php echo $photo['caption']; ?><span><img src="/views/storage/asset/delete.png" onclick=<?php echo "d(" . $photo['id'] . "," . $main[0]['id'] . ")"; ?> class="float-right delete" style="height:40px;"></span></h6>
+                                    <h6><?php echo $photo['caption']; ?><span><img src="/views/storage/asset/delete.png" onclick=<?php echo "d(" . $photo['photoId'] . "," . $id . ")"; ?> class="float-right delete" style="height:40px;"></span></h6>
 
 
                                 </div>

@@ -7,5 +7,5 @@ $router->post('delete', 'AlbumController@delete');
 $router->get('album', 'PhotoController@index');
 $router->get('photo/create', 'PhotoController@create');
 $router->post('photo/store', 'PhotoController@store');
-$router->post('photo/delete', 'PhotoController@delete');
+$router->post('photo/delete/', 'PhotoController@delete');
 $router->get('slider', 'PhotoController@slider');

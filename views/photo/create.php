@@ -1,4 +1,5 @@
-<?php include('views/partials/header.php');   ?>
+<?php include('views/partials/header.php');
+session_start();   ?>
 
 <link rel="stylesheet" type="text/css" href="/views/assets/photos.css">
 
@@ -11,6 +12,10 @@
                 Add new photo
             </div>
             <div class="card-body">
+                <?php if (isset($_SESSION['error'])) {
+                ?><div class="alert alert-danger"><?php echo $_SESSION['error']; ?></div>
+                <?php }
+                unset($_SESSION['error']); ?>
                 <form action="/photo/store" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="album" value=<?php echo $_GET['album'] ?>>
                     <div class="form-group">

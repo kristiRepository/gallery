@@ -30,10 +30,10 @@ class Album
         return $result = $statment->fetchAll();
     }
 
-    public function deleteAlbum($id)
+    public function deleteAlbumWithPhotos($id)
     {
 
-        $query = "DELETE FROM album WHERE id=:id";
+        $query = "DELETE album,photo FROM album LEFT JOIN photo ON album.id=photo.album_id WHERE album.id=:id";
         $statment = $this->pdo->prepare($query);
         $statment->bindParam(":id", $id, PDO::PARAM_INT);
         $statment->execute();
@@ -47,13 +47,5 @@ class Album
         $statment->bindParam(":id", $id, PDO::PARAM_INT);
         $statment->execute();
         return $result = $statment->fetchAll();
-    }
-
-    public function deletePhotos($id)
-    {
-        $query = "DELETE FROM photo WHERE album_id = :id";
-        $statment = $this->pdo->prepare($query);
-        $statment->bindParam(":id", $id, PDO::PARAM_STR);
-        $statment->execute();
     }
 }

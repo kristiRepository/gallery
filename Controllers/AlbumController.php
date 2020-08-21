@@ -1,5 +1,7 @@
 <?php
 
+require("Helper.php");
+
 
 class AlbumController
 {
@@ -19,7 +21,6 @@ class AlbumController
 
     public function index()
     {
-
         $albums = $this->query->fetchAlbums();
         require('views/album/gallery.php');
     }
@@ -35,18 +36,28 @@ class AlbumController
     {
         session_start();
         if (isset($_POST['submit'])) {
+            if (isset($_POST['name'])) {
+                if (Helper::notEmpty($_POST['name'], "Album", "name", "create")) {
+                    return;
+                }
+            }
+            if (isset($_POST['description'])) {
+                if (Helper::notEmpty($_POST['description'], "Album", "description", "create")) {
+                    return;
+                }
+            }
+
             $name = $_POST['name'];
             $description = $_POST['description'];
             $image = "missing.png";
+            if (isset($_FILES['thumbnail']['name'])) {
+                if ($_FILES['thumbnail']['name'] != "") {
+                    $target = $_SERVER['DOCUMENT_ROOT'] . "/views/storage/albums/" . $_FILES['thumbnail']['name'];
 
-            if ($_FILES['thumbnail']['name'] != "") {
-                $target = $_SERVER['DOCUMENT_ROOT'] . "/views/storage/albums/" . $_FILES['thumbnail']['name'];
+                    move_uploaded_file($_FILES['thumbnail']['tmp_name'], $target);
 
-                move_uploaded_file($_FILES['thumbnail']['tmp_name'], $target);
-
-
-
-                $image = $_FILES['thumbnail']['name'];
+                    $image = $_FILES['thumbnail']['name'];
+                }
             }
 
 
@@ -64,9 +75,7 @@ class AlbumController
     {
         session_start();
         $id = $_POST['id'];
-        $this->query->deleteAlbum($id);
-        $this->query->deletePhotos($id);
-
+        $this->query->deleteAlbumWithPhotos($id);
         $_SESSION['success'] = 'Album deleted successfully';
         header('Location: /');
     }

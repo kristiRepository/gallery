@@ -1,5 +1,6 @@
 <?php include('views/partials/header.php');   ?>
 <link rel="stylesheet" type="text/css" href="/views/assets/styles.css">
+<?php session_start(); ?>
 
 <body>
 
@@ -10,6 +11,10 @@
                 Create new album
             </div>
             <div class="card-body">
+                <?php if (isset($_SESSION['error'])) {
+                ?><div class="alert alert-danger"><?php echo $_SESSION['error']; ?></div>
+                <?php unset($_SESSION['error']);
+                } ?>
                 <form action="/store" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name">Name</label>

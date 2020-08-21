@@ -12,41 +12,50 @@
                 <img class="rounded mx-auto d-block" id="title" style="padding-top:30px; padding-bottom:30px;" src="/views/storage/banner.png">
             </div>
             <?php
-            if (isset($_SESSION['success'])) {
+            if (isset($_SESSION['error'])) {
+            ?><div class="alert alert-danger"><?php echo $_SESSION['error']; ?></div>
+            <?php unset($_SESSION['error']);
+            }  ?>
+
+            <?php if (isset($_SESSION['success'])) {
             ?><div class="alert alert-success"><?php echo $_SESSION['success']; ?></div>
-            <?php }
-            unset($_SESSION['success']); ?>
+            <?php unset($_SESSION['success']);
+            }  ?>
 
-            <?php $i = 0;
-            foreach ($albums as $album) {
-                if ($i % 3 == 0) {
-                    echo '<div class="row">';
-                } ?>
-                <div class="col-lg-4" style="padding-bottom:20px;">
-                    <div class="card border-primary transform-on-hover">
-                        <a href=<?php echo "/album/?id=" . $album['id']; ?>> <img src=<?php echo "/views/storage/albums/" . $album['thumbnail']; ?> class="card-img-top img-thumbnail border" style="height:250px;"></a>
-                        <div class="card-body">
-                            <h6><?php echo $album['name']; ?></h6>
-                            <p class="text-muted card-text"><?php
-                                                            if (strlen($album['description']) > 25) {
-                                                                echo substr($album['description'], 0, 26) . " .....";
-                                                            } else {
-                                                                echo $album['description'];
-                                                            } ?> <span><img src="/views/storage/asset/delete.png" onclick="handleDelete(<?php echo $album['id']; ?>)" class="float-right delete" style="height:40px;"></span></p>
 
+            <?php if (!empty($albums)) {
+                $i = 0;
+                foreach ($albums as $album) {
+                    if ($i % 3 == 0) {
+                        echo '<div class="row">';
+                    } ?>
+                    <div class="col-lg-4" style="padding-bottom:20px;">
+                        <div class="card border-primary transform-on-hover">
+                            <a href=<?php echo "/album/?id=" . $album['id']; ?>> <img src=<?php echo "/views/storage/albums/" . $album['thumbnail']; ?> class="card-img-top img-thumbnail border" style="height:250px;"></a>
+                            <div class="card-body">
+                                <h6><?php echo $album['name']; ?></h6>
+                                <p class="text-muted card-text"><?php
+                                                                if (strlen($album['description']) > 25) {
+                                                                    echo substr($album['description'], 0, 26) . " .....";
+                                                                } else {
+                                                                    echo $album['description'];
+                                                                } ?> <span><img src="/views/storage/asset/delete.png" onclick="handleDelete(<?php echo $album['id']; ?>)" class="float-right delete" style="height:40px;"></span></p>
+
+                            </div>
                         </div>
                     </div>
+                <?php if ($i % 3 == 2) {
+                        echo '</div>';
+                    }
+                    $i++;
+                } ?>
+
+                <div class="col-lg-4" style="padding-bottom:20px;">
+                    <a class="lightbox" href="/create"> <img src="/views/storage/asset/add2.png" class="img-thumbnail" id="add" style=" margin:80px; width:150px; height:150px; border:1px solid black "></a>
                 </div>
-            <?php if ($i % 3 == 2) {
-                    echo '</div>';
-                }
-                $i++;
-            } ?>
-
-            <div class="col-lg-4" style="padding-bottom:20px;">
-                <a class="lightbox" href="/create"> <img src="/views/storage/asset/add2.png" class="img-thumbnail" id="add" style=" margin:80px; width:150px; height:150px; border:1px solid black "></a>
-            </div>
-
+            <?php } else { ?>
+                <div><a href="/create" class="btn btn-primary">Add your first album</a></div>
+            <?php } ?>
         </div>
     </section>
 

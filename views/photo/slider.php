@@ -10,6 +10,7 @@
 
 
       <?php foreach ($photos as $photo) {
+
         if ($photo['path'] == $photoPath[0]['path']) {
           continue;
         } ?>
@@ -38,7 +39,7 @@
 
 <div class="row pt-5" style="margin:0 auto;">
   <?php foreach ($photos as $photo) { ?>
-    <img class="ima" album=<?php echo $photo['album_id']; ?> id=<?php echo $photo['id']; ?> src=<?php echo "/views/storage/photos/" . $photo['path']; ?> style="width:130px; height:110px; padding-right:10px; padding-leftt:5px;">
+    <img class="ima" album=<?php echo $photo['album_id']; ?> id=<?php echo $photo['photoId']; ?> src=<?php echo "/views/storage/photos/" . $photo['path']; ?> style="width:130px; height:110px; padding-right:10px; padding-leftt:5px;">
   <?php } ?>
 
 

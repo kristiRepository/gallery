@@ -22,8 +22,9 @@ class PhotoController
     {
         $id = $_GET['id'];
         $photos = $this->queryPhoto->fetchPhotos($id);
-        $main = $this->queryAlbum->findAlbum($id);
-        $albums = $this->queryAlbum->fetchAlbums($id);
+        $albums = $this->queryAlbum->fetchAlbums();
+        $main = array_column($albums, 'name', 'id');
+
 
         require('views/photo/index.php');
     }
@@ -37,28 +38,48 @@ class PhotoController
     {
 
         session_start();
+
         if (isset($_POST['submit'])) {
-            $caption = $_POST['caption'];
+            $find = empty($this->queryAlbum->findAlbum($_POST['album']));
 
-            if (isset($_FILES['path'])) {
-                $target = $_SERVER['DOCUMENT_ROOT'] . "/views/storage/photos/" . $_FILES['path']['name'];
-
-                move_uploaded_file($_FILES['path']['tmp_name'], $target);
-
-
-                $path = $_FILES['path']['name'];
+            if (isset($_POST['album']) && $_POST['album'] != "" && !$find) {
                 $id = $_POST['album'];
-                $album = $this->queryAlbum->findAlbum($id);
+                $direct = "photo/create/?album=" . $_POST['album'];
+                if (isset($_POST['caption'])) {
+                    if (Helper::notEmpty($_POST['caption'], "Photo", "caption", $direct)) {
+                        return;
+                    }
+                }
+                $caption = $_POST['caption'];
 
-                $data = array("caption" => $caption, "path" => $path, "album_id" => $album[0]['id']);
+                if (isset($_FILES['path'])) {
+                    if (Helper::notEmpty($_FILES['path']['name'], "Photo", "path", $direct)) {
+                        return;
+                    }
+                    $target = $_SERVER['DOCUMENT_ROOT'] . "/views/storage/photos/" . $_FILES['path']['name'];
+
+                    move_uploaded_file($_FILES['path']['tmp_name'], $target);
+
+
+                    $path = $_FILES['path']['name'];
+
+
+                    $data = array("caption" => $caption, "path" => $path, "album_id" => $id);
 
 
 
-                $this->queryPhoto->storePhoto($data);
+                    $this->queryPhoto->storePhoto($data);
 
-                $_SESSION['success'] = 'New photo added';
+                    $_SESSION['success'] = 'New photo added';
 
-                header('Location: /album/?id=' . $id . "");
+                    header('Location: /album/?id=' . $id . "");
+                    return;
+                }
+            } else {
+                $_SESSION['error'] = "The choosen album  was not found";
+
+                header("Location: /");
+                return true;
             }
         }
     }

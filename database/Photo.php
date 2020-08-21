@@ -14,11 +14,10 @@ class Photo
     public function fetchPhotos($id)
     {
 
-        $query = "SELECT * from photo WHERE album_id=" . $id . "";
+        $query = "SELECT album.id AS albumId,photo.id AS photoId,name,caption,path,album_id from photo INNER JOIN album ON photo.album_id=album.id WHERE photo.album_id=" . $id . "";
         $statment = $this->pdo->prepare($query);
         $statment->execute();
         $photos = $statment->fetchAll();
-
         return $photos;
     }
 
@@ -50,5 +49,4 @@ class Photo
         $statment->execute();
         return $statment->fetchAll();
     }
-
 }
