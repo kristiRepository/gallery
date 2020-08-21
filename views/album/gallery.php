@@ -24,7 +24,7 @@
                 } ?>
                 <div class="col-lg-4" style="padding-bottom:20px;">
                     <div class="card border-primary transform-on-hover">
-                        <a href=<?php echo "/Gallery/album/?id=" . $album['id']; ?>> <img src=<?php echo "/views/storage/albums/" . $album['thumbnail']; ?> class="card-img-top img-thumbnail border" style="height:250px;"></a>
+                        <a href=<?php echo "/album/?id=" . $album['id']; ?>> <img src=<?php echo "/views/storage/albums/" . $album['thumbnail']; ?> class="card-img-top img-thumbnail border" style="height:250px;"></a>
                         <div class="card-body">
                             <h6><?php echo $album['name']; ?></h6>
                             <p class="text-muted card-text"><?php
@@ -44,7 +44,7 @@
             } ?>
 
             <div class="col-lg-4" style="padding-bottom:20px;">
-                <a class="lightbox" href="/Gallery/create"> <img src="/views/storage/asset/add2.png" class="img-thumbnail" id="add" style=" margin:80px; width:150px; height:150px; border:1px solid black "></a>
+                <a class="lightbox" href="/create"> <img src="/views/storage/asset/add2.png" class="img-thumbnail" id="add" style=" margin:80px; width:150px; height:150px; border:1px solid black "></a>
             </div>
 
         </div>
@@ -56,7 +56,7 @@
     </div>
 
     <!-- Delete Modal -->
-    <form action="/Gallery/delete" method='POST' id='deleteAlbum'>
+    <form action="/delete" method='POST' id='deleteAlbum'>
 
         <div class="modal" id='deleteModal' tabindex="-1" role="dialog">
             <div class="modal-dialog">

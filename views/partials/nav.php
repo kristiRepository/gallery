@@ -8,10 +8,10 @@
     <hr>
     <?php foreach ($albums as $album) { ?>
 
-        <a href=<?php echo "/Gallery/album/?id=" . $album['id']; ?>><?php echo $album['name'] ?></a>
+        <a href=<?php echo "/album/?id=" . $album['id']; ?>><?php echo $album['name'] ?></a>
 
     <?php } ?>
-    <a style="background-color: #f4511e; color:white;" href="/Gallery/create/">Add new album</a>
+    <a style="background-color: #f4511e; color:white;" href="/create/">Add new album</a>
 </div>
 
 

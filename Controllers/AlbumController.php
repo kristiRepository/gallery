@@ -56,7 +56,7 @@ class AlbumController
 
             $_SESSION['success'] = 'New album added';
 
-            header('Location: /Gallery/');
+            header('Location: /');
         }
     }
 
@@ -68,6 +68,6 @@ class AlbumController
         $this->query->deletePhotos($id);
 
         $_SESSION['success'] = 'Album deleted successfully';
-        header('Location: /Gallery/');
+        header('Location: /');
     }
 }

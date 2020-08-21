@@ -58,7 +58,7 @@ class PhotoController
 
                 $_SESSION['success'] = 'New photo added';
 
-                header('Location: /Gallery/album/?id=' . $id . "");
+                header('Location: /album/?id=' . $id . "");
             }
         }
     }

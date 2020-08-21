@@ -11,7 +11,7 @@
                 Add new photo
             </div>
             <div class="card-body">
-                <form action="/Gallery/photo/store" method="POST" enctype="multipart/form-data">
+                <form action="/photo/store" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="album" value=<?php echo $_GET['album'] ?>>
                     <div class="form-group">
                         <label for="name">Caption</label>

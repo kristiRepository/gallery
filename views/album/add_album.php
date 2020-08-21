@@ -10,7 +10,7 @@
                 Create new album
             </div>
             <div class="card-body">
-                <form action="/Gallery/store" method="POST" enctype="multipart/form-data">
+                <form action="/store" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input name='name' type="text" class="form-control" placeholder="Enter album name" required>
